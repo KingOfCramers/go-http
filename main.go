@@ -1,19 +1,18 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 )
 
-func hello(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(w, "Hello!")
-}
-
 const port = ":8090"
 
 func main() {
-	http.HandleFunc("/hello", hello)
+	// Setup handlers...
+	http.HandleFunc("/health-check", HealthCheckHandler)
+	http.HandleFunc("/hello", HelloWorldHandler)
+
+	// Listen server...
 	log.Println("listen on", port)
 	log.Fatal(http.ListenAndServe(port, nil))
 }
