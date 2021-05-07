@@ -2,14 +2,10 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/repo
     docker:
-      - image: circleci/golang:1.15.8
+      - image: circleci/golang:1.15.8 # Uses docker to run our tests...
     steps:
       - checkout
       - run:
           name: Run tests
-          command: |
-            mkdir -p /tmp/test-reports && go test
-      - store_test_results:
-          path: /tmp/test-reports
+          command: go test
