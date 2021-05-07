@@ -11,3 +11,8 @@ Build the Docker image:
 And run it locally:
 
 `docker run -it -p 8090:8090 go-http`
+
+
+## Tests
+
+`go test`
