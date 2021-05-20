@@ -1,4 +1,4 @@
-# go-http
+# 🧮 go-http
 
 Basic http server with Docker and Go, with CircleCI for continuous integration.
 
@@ -6,11 +6,11 @@ Basic http server with Docker and Go, with CircleCI for continuous integration.
 
 Build the Docker image:
 
-`docker build -t go-http:latest .`
+`docker build -t kingofcramers/go-http:latest .`
 
 And run it locally:
 
-`docker run -it -p 8090:8090 go-http`
+`docker run -it --rm -p 8090:8090 kingofcramers/go-http:latest`
 
 ## Testing
 
@@ -18,6 +18,9 @@ And run it locally:
 
 ## Production
 
-`go build`
+This application runs in Kubernetes, you'll need to modify these directions to replace `kingofcramers` with your username on Docker Hub:
 
-This will create a binary on your local machine
+1. `docker build -t kingofcramers/go-http:latest .`
+2. `docker push kingofcramers/go-http:latest`
+3. `kubectl apply -f kubernetes/ns.yaml`
+4. `kubectl apply -f kubernetes/rc.yaml`

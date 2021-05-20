@@ -13,6 +13,6 @@ func main() {
 	http.HandleFunc("/hello", HelloWorldHandler)
 
 	// Listen server...
-	log.Println("listen on", port)
+	log.Println("Listening on", port)
 	log.Fatal(http.ListenAndServe(port, nil))
 }

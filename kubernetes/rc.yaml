@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: go-http
+  namespace: go-http
+spec:
+  replicas: 2
+  template:
+    metadata:
+      annotations:
+        description: "This is a go http server template for Docker + Kubernetes."
+      labels:
+        app: go-http
+    spec:
+      containers:
+      - name: go-http 
+        image: kingofcramers/go-http
+        livenessProbe:
+          httpGet:
+            path: /health-check
+            port: 8090
+          initialDelaySeconds: 15
+        ports:
+        - containerPort: 8090
